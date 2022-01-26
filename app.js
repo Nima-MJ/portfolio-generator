@@ -41,9 +41,23 @@ const promptUser = () =>{
             }
         },
         {
+            type: "confirm",
+            name: "confirmAbout",
+            message: `Would you like to enter some information about yourself for an "About" section? `,
+            default: true
+        },
+        {
             type: "input",
             name:"about",
-            message:"Provide some information about yourself:"
+            message:"Provide some information about yourself:",
+            when: ({ confirmAbout }) => { //when gets an object of all the answers provided by the user so far and we are validating only the confirmAbout variable
+                if(confirmAbout){     // if ture run this object else skip it
+                    return true;
+                }else{
+                    return false;
+                }
+
+            }
         }
     ]);
 };
